@@ -1,0 +1,51 @@
+<!-- This file will display a dashboard to monitor servers with -->
+
+<html ng-app="nodedashApp">
+	<head>
+		<title>NodeDash</title>
+
+		<!-- fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+
+		<!-- scripts -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-resource.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-route.js"></script>
+		<script src="data/lib/angular-breadcrumbs.js"></script>
+		<script src="data/controllers.js"></script>
+
+
+		<!-- styles -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			.title {
+				font-family: 'Candal', sans-serif;
+				margin-bottom: 0px;
+				text-align: center;
+			}
+			.sub-title {
+				margin-top: 0px;
+				text-align: center;
+			}
+
+		</style>
+
+	</head>
+
+
+	<body ng-controller="RootController">
+		<div class="container">
+			<h1 class="title">NodeDash</h1>
+			<p class="sub-title">A NodeJS-powered server monitor</p>
+			<br>
+			<p><strong>Summary: </strong>{{servers.length}} servers, {{(servers|filter:{healthy:true}).length}} healthy, {{(servers|filter:{healthy:false}).length}} unhealthy.</p>
+
+			<ol class="breadcrumb">
+				<li ng-repeat="breadcrumb in breadcrumbs.getAll()"><a href="#{{breadcrumb.path}}" ng-hide="$last">{{breadcrumb.label}}</a><span ng-show="$last">{{breadcrumb.label}}</span></li>
+			</ol>
+
+			<div ng-view></div>
+		</div>
+	</body>
+</html>
