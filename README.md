@@ -8,5 +8,12 @@ This is a very early version of NodeDash that I'm putting up on GitHub to have i
 This code is free to use, but be aware that there are going to be a LOT of updates in this code in a few days/weeks/months.
 
 
+Planned features:
+ - [x] Basic server monitoring proof of concept
+ - [ ] Basic graphing support
+ - [ ] Gearman monitoring support
+ - [ ] Ability to monitor forever and supervisord
+
+
 
 Licensed with GPL v2.
