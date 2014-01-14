@@ -10,10 +10,10 @@ This code is free to use, but be aware that there are going to be a LOT of updat
 
 
 Planned features:
- - [x] Basic server monitoring proof of concept
- - [ ] Basic graphing support
- - [ ] Gearman monitoring support
- - [ ] Ability to monitor forever and supervisord
+ -  [X] Basic server monitoring proof of concept
+ -  [ ] Basic graphing support
+ -  [ ] Gearman monitoring support
+ -  [ ] Ability to monitor forever and supervisord
 
 
 
