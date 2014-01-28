@@ -7,7 +7,7 @@ data to the master server using socket.io
 */
 
 var io = require('socket.io-client');
-var socket = io.connect('192.168.2.7', {
+var socket = io.connect('10.0.1.107', {
     port: 6278
 });
 

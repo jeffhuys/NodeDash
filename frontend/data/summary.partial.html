@@ -5,18 +5,20 @@
 	<div class="panel-body">
 		<table class="table table-hover table-bordered">
 			<th>Server name</th>
+			<th>Events/second</th>
 			<th>CPU</th>
 			<th>RAM</th>
 			<th>Active processes</th>
 			<th>Last seen</th>
 			<th>Details</th>
 			<tr ng-repeat="server in servers" ng-class="{success: server.healthy, danger: !server.healthy}">
-				<td>{{server.stats.hostname}}</td>
-				<td>{{server.stats.cpu}}</td>
-				<td>{{server.stats.freemem}}</td>
-				<td>{{server.stats.active_processes}}</td>
+				<td>{{server.data.stats.hostname}}</td>
+				<td>{{server.data.stats.events_per_second}}</td>
+				<td>{{server.data.stats.cpu}}</td>
+				<td>{{server.data.stats.freemem}}</td>
+				<td>{{server.data.stats.active_processes}}</td>
 				<td>{{server.lastseen * 1000 | date:'medium'}}</td>
-				<td><a href="#/detail/{{server.stats.hostname}}">Show details</a></td>
+				<td><a href="#/detail/{{server.data.stats.hostname}}">Show details</a></td>
 			</tr>
 		</table>
 

@@ -1,4 +1,4 @@
-	<div class="panel panel-default" ng-if="!server.stats.hostname" style="width: 50%; margin-left: auto; margin-right: auto;">
+	<div class="panel panel-default" ng-if="!server.data.stats.hostname" style="width: 50%; margin-left: auto; margin-right: auto;">
 		<div class="panel-body">
 			<h2 class="title">Still loading!</h2>
 			<p class="sub-title">If you see this, and you're sure the hostname you've provided is valid and existent, please keep waiting for a little longer until NodeDash finishes fetching the server list. Depending on your configuration, this could take some time. If you'd wish to return to the summary view, please click <a href="#/summary">here</a>.</p>
@@ -6,16 +6,34 @@
 	</div>
 
 
-	<div ng-if="server.stats.hostname">
+
+
+	<div ng-if="server.data.stats.hostname">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<strong>Details</strong>: {{server.stats.hostname}}
 			</div>
 			<div class="panel-body">
-				<strong>Hostname:</strong> {{server.stats.hostname}}<br>
-				<strong>CPU:</strong> {{server.stats.cpu}}<br>
-				<strong>Free RAM:</strong> {{server.stats.freemem|number:1}}MB / {{server.stats.totalmem|number:1}}MB ({{100-(server.stats.freemem/server.stats.totalmem) * 100|number:1}}% used)<br>
-				<strong>Last seen:</strong> {{server.lastseen}}
+				<strong>Hostname:</strong> {{server.data.stats.hostname}}<br>
+				<strong>CPU:</strong> {{server.data.stats.cpu}}<br>
+				<strong>Free RAM:</strong> {{server.data.stats.freemem|number:1}}MB / {{server.data.stats.totalmem|number:1}}MB ({{100-(server.data.stats.freemem/server.data.stats.totalmem) * 100|number:1}}% used)<br>
+				<strong>Last seen:</strong> {{server.lastseen}}<br>
+				<strong>Events per second:</strong> {{server.data.stats.events_per_second}}<br>
+
+				<hr>
+				<nvd3-line-chart
+					data="server.chart"
+					height="350"
+					showXAxis="true"
+					showYAxis="true"
+					xAxisTickFormat="xAxisTickFormatFunction()"
+					tooltips="true"       
+					interactive="true"
+					objectequality="true"
+					isArea="true"
+					 interpolate="linear"
+					>
+				</nvd3-line-chart>
 			</div>
 		</div>
 	<!-- 
@@ -35,4 +53,9 @@
 		</table>
 	 -->
 		<p>Refresh server every <input type="number" min="1" max="60" class="form-control input-sm" style="width:5em; display: inline-block;" ng-model="detailRefreshSeconds" \> seconds (broken)</p>
+
+
 	</div>
+
+
+

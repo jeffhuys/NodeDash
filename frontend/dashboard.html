@@ -3,17 +3,25 @@
 <html ng-app="nodedashApp">
 	<head>
 		<title>NodeDash</title>
+		<meta charset="utf-8">
 
 		<!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+		<link href='data/nvd3/nv.d3.css' rel='stylesheet' type='text/css'> 
 
 		<!-- scripts -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-resource.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-route.js"></script>
+
+		<script src="bower_components/d3/d3.js"></script>
+		<script src="bower_components/nvd3/nv.d3.js"></script>
+		<script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+
 		<script src="data/lib/angular-breadcrumbs.js"></script>
 		<script src="data/controllers.js"></script>
+
 
 
 		<!-- styles -->
@@ -40,7 +48,7 @@
 			<p class="sub-title">A NodeJS-powered server monitor</p>
 			<br>
 			<p><strong>Summary: </strong>{{servers.length}} servers, {{(servers|filter:{healthy:true}).length}} healthy, {{(servers|filter:{healthy:false}).length}} unhealthy.</p>
-
+			<a href="#/config">Configuration</a>
 			<ol class="breadcrumb">
 				<li ng-repeat="breadcrumb in breadcrumbs.getAll()"><a href="#{{breadcrumb.path}}" ng-hide="$last">{{breadcrumb.label}}</a><span ng-show="$last">{{breadcrumb.label}}</span></li>
 			</ol>
