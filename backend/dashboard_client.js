@@ -7,13 +7,13 @@ data to the master server using socket.io
 */
 
 var io = require('socket.io-client');
-var socket = io.connect('10.0.1.107', {
+var socket = io.connect('cube.writebrite.nl', {
     port: 6278
 });
 
 var os = require('os');
 var osutils = require('os-utils');
-var hostname = os.hostname() + Math.round(Math.random() * 100);
+var hostname = os.hostname();
 
 console.log("[DASHCLIENT] Starting dashboard client...");
 console.log("[DASHCLIENT] Hostname: " + hostname);

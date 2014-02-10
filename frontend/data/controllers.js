@@ -6,7 +6,7 @@ nodedashApp.controller('RootController', ['$scope', 'breadcrumbs', function($sco
 	$scope.breadcrumbs = breadcrumbs;
 
 	$scope.config = {};
-	$scope.config.socketAddress = '10.0.1.107:6278';
+	$scope.config.socketAddress = 'cube.writebrite.nl:6278';
 
 	$scope.reconnect = function() {
 		if($scope.socket) {
@@ -40,7 +40,6 @@ nodedashApp.controller('RootController', ['$scope', 'breadcrumbs', function($sco
 				if($scope.servers[i].data.stats.hostname == data.stats.hostname) {
 					exists = true;
 					index = i;
-					console.log("TRUE");
 				}
 			};
 
@@ -54,12 +53,24 @@ nodedashApp.controller('RootController', ['$scope', 'breadcrumbs', function($sco
 				$scope.servers[newindex].chart = {};
 				$scope.servers[newindex].chart = [
 					{
+						"key": "RAM",
+						"color": "#7f8c8d",
+						"values": []
+					},
+					{	
+						"key": "CPU",
+						"color": "#16a085",
+						"values": []
+					},
+					{
 						"key": "Events/second",
-						"values": [ [new Date().getTime(), 0] ]
-					}];
+						"color": "#c0392b",
+						"values": []
+					}
+					];
 
 				console.log($scope.servers[newindex].chart[0].values);
-				$scope.$apply();
+				//$scope.$apply();
 
 				//console.log("Applied");
 
@@ -103,12 +114,24 @@ nodedashApp.controller('RootController', ['$scope', 'breadcrumbs', function($sco
 					//console.log("No");
 				}
 
-				
-				$scope.servers[i].chart[0].values.push([ new Date().getTime(), $scope.servers[i].data.stats.events_per_second]);
+				//if($scope.servers[i].data.stats.events_per_second != undefined) {
+				//	$scope.servers[i].chart[0].values.push([ new Date().getTime(), $scope.servers[i].data.stats.events_per_second]);
+				//} else {
+					
+				//}
 
-				if($scope.servers[i].chart[0].values.length > 60) {
-					//$scope.servers[i].chart[0].values.shift();
-				}
+				$scope.servers[i].chart[0].values.push([ new Date().getTime(), Math.round(100-($scope.servers[i].data.stats.freemem/$scope.servers[i].data.stats.totalmem) * 100) ] );
+				$scope.servers[i].chart[1].values.push([ new Date().getTime(), $scope.servers[i].data.stats.cpu]);
+				$scope.servers[i].chart[2].values.push([ new Date().getTime(), $scope.servers[i].data.stats.events_per_second]);
+
+
+				for (var j = 0; j < $scope.servers[i].chart.length; j++) {
+					if($scope.servers[i].chart[j].values.length > 60) {
+						$scope.servers[i].chart[j].values.shift();
+					}
+				};
+
+				
 				console.log($scope.servers[i].chart[0].values);
 				//$scope.servers[i].chart[0].values[0] = [0, Math.random() * 100];
 
@@ -119,6 +142,25 @@ nodedashApp.controller('RootController', ['$scope', 'breadcrumbs', function($sco
 	  	$scope.checkServers();
 	};
 	$scope.reconnect();
+
+	$scope.xAxisTickFormat = function(){
+    	return function(d){
+        	return d3.time.format('%X')(new Date(d));
+        }
+	};
+
+
+	$scope.colorFunction = function() {
+		return function(d, i) {
+			if(i == 0) {
+				return '#000000';
+			}
+			if(i == 1) {
+				return '#537295';
+			}
+    		return '#E01B5D'
+    	};
+	}
 
 
 

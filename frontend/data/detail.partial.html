@@ -21,17 +21,23 @@
 				<strong>Events per second:</strong> {{server.data.stats.events_per_second}}<br>
 
 				<hr>
+
 				<nvd3-line-chart
 					data="server.chart"
+					id="line"
 					height="350"
 					showXAxis="true"
 					showYAxis="true"
-					xAxisTickFormat="xAxisTickFormatFunction()"
-					tooltips="true"       
-					interactive="true"
+					xAxisTickFormat="xAxisTickFormat()"
+					
+					showLegend="true"
+					
 					objectequality="true"
 					isArea="true"
-					 interpolate="linear"
+					interpolate="linear"
+
+					interactive="true"
+					tooltips="true"
 					>
 				</nvd3-line-chart>
 			</div>
