@@ -1,6 +1,6 @@
 {
   "name": "node-dash",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "a nodejs and sockets-powered server monitoring dashboard",
   "main": "./lib/node-dash.js",
   "author": {
