@@ -11,5 +11,7 @@ var nodedash = require('node-dash-client');
 nodedash.setDebug(true);
 
 nodedash.connect("wheatley.writebrite.nl", 6278, "", function() {
-	nodedash.sendStatsAutomatically(10000);
+	nodedash.sendStatsAutomatically(10000, {
+		events_per_second: 5
+	});
 });
