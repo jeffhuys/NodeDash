@@ -7,6 +7,28 @@
     "name": "Jeff Huijsmans",
     "email": "jeffhuys@gmail.com"
   },
+  "bin": {
+    "nodedash-masterserver": "./bin/nodedash-masterserver"
+  },
+  "keywords": [
+    "dashboard",
+    "sockets",
+    "socket",
+    "graph",
+    "cpu",
+    "ram",
+    "stats",
+    "statistics"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffhuys/NodeDash.git"
+  },
+  "dependencies": {
+    "socket.io": "0.9.16",
+    "socket.io-client": "0.9.16",
+    "os-utils": "0.0.14"
+  },
   "readme": "node-dash",
   "homepage": "https://github.com/jeffhuys/NodeDash"
 }
