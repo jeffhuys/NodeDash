@@ -6,7 +6,7 @@ This file should be run on multiple hosts, which will redirect this servers'
 data to the master server using socket.io
 */
 
-var nodedash = require('node-dash-client');
+var nodedash = require('../lib/node-dash');
 
 nodedash.setDebug(true);
 
