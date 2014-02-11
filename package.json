@@ -1,6 +1,6 @@
 {
   "name": "node-dash",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "a nodejs and sockets-powered server monitoring dashboard",
   "main": "./lib/node-dash.js",
   "author": {
@@ -8,7 +8,7 @@
     "email": "jeffhuys@gmail.com"
   },
   "bin": {
-    "nodedash-masterserver": "./bin/nodedash-masterserver"
+    "nodedash-masterserver": "./bin/nodedash-masterserver.js"
   },
   "keywords": [
     "dashboard",
