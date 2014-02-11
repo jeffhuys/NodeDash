@@ -1,6 +1,6 @@
 {
   "name": "node-dash",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "a nodejs and sockets-powered server monitoring dashboard",
   "main": "./lib/node-dash.js",
   "author": {
@@ -29,6 +29,5 @@
     "socket.io-client": "0.9.16",
     "os-utils": "0.0.14"
   },
-  "readme": "node-dash",
   "homepage": "https://github.com/jeffhuys/NodeDash"
 }
